@@ -1,0 +1,58 @@
+﻿@using MVCMail.Models
+
+@model Sample
+
+
+@if (TempData["succes"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["succes"]
+    </div>
+
+}
+
+@if (TempData["Sent"] != null)
+{
+    <div class="alert alert-primary" role="alert">
+        @TempData["Sent"]
+    </div>
+
+}
+
+@if (ViewBag.IsnotActive != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @ViewBag.IsnotActive
+    </div>
+
+}
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Index</h2>
+
+@using (Html.BeginForm())
+{
+    <div>
+        Name
+    </div>
+    <div>
+        @Html.TextBoxFor(x => x.Name)
+    </div>
+
+    <div>
+        Email
+    </div>
+    <div>
+        @Html.TextBoxFor(x => x.Email)
+
+        @Html.ValidationMessageFor(x => x.Email)
+    </div>
+
+    <div>
+        <button>Send</button>
+    </div>
+
+}
+
+
